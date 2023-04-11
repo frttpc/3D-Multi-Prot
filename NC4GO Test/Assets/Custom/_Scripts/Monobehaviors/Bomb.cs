@@ -3,10 +3,12 @@ using System;
 using UnityEngine;
 using Frttpc.Statics;
 
-namespace Frttpc.Bomb
+namespace Frttpc
 {
     public class Bomb : MonoBehaviour
     {
+        [SerializeField] private Transform rayDir;
+
         [SerializeField] private int countdownTime = 3;
         private int range = 1;
 
@@ -21,9 +23,21 @@ namespace Frttpc.Bomb
         {
             yield return Yielders.Get(countdownTime);
             OnDetonate?.Invoke();
+            Explosion();
             Destroy(gameObject);
         }
 
-        public void SetRange(int newRange) => range = newRange;
+        private void Explosion()
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                RaycastHit2D raycastHit = Physics2D.Raycast(transform.position, rayDir.forward, range);
+                rayDir.Rotate(Vector3.up, 90f);
+
+                Debug.DrawRay(transform.position, rayDir.forward, Color.red, 5);
+            }
+        }
+
+        public void IncreaseRange() => range++;
     }
 }

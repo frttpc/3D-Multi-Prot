@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Frttpc.Statics;
 
 namespace Frttpc
 {
@@ -31,7 +32,7 @@ namespace Frttpc
         {
             if(bombCount > 0)
             {
-                Instantiate(bombPrefab, transform.position, Quaternion.identity);
+                Instantiate(bombPrefab, transform.position.toInt(), Quaternion.identity);
                 //bombCount--;
             }
         }
