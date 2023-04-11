@@ -5,7 +5,7 @@ using Unity.Netcode;
 using UnityEngine.UI;
 using TMPro;
 
-namespace frttpc
+namespace Frttpc
 {
     public class NetworkManagerUI : MonoBehaviour
     {
@@ -23,13 +23,20 @@ namespace frttpc
             hostButton.onClick.AddListener(() => {
                 NetworkManager.Singleton.StartHost();
                 statusText.text = "Host";
+                DisableButtons();
             });
             
             clientButton.onClick.AddListener(() => {
                 NetworkManager.Singleton.StartClient();
                 statusText.text = "Client";
+                DisableButtons();
             });
         }
 
+        private void DisableButtons()
+        {
+            hostButton.interactable = false;
+            clientButton.interactable = false;
+        }
     }
 }

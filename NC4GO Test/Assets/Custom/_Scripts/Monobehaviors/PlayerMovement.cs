@@ -1,37 +1,33 @@
 using UnityEngine;
 using Unity.Netcode;
-using frttpc;
+using Frttpc;
+using Frttpc.Extensions;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : NetworkBehaviour
 {
-    private CharacterController charController;
-    private PlayerInputActions playerInputActions;
-
     [SerializeField] private float moveSpeed;
+    [SerializeField] [Range(0, 1)] private float rotationSmoothness;
+
+    private CharacterController charController;
+    private PlayerInputController playerInputController;
 
     public override void OnNetworkSpawn()
     {
         charController = GetComponent<CharacterController>();
-
-        playerInputActions = new();
-        playerInputActions.Enable();
-    }
-
-    public override void OnNetworkDespawn()
-    {
-        playerInputActions.Disable();
+        playerInputController = GetComponent<PlayerInputController>();
     }
 
     private void Update()
     {
         if (!IsOwner) return;
 
-        if (playerInputActions.Player.Movement.IsInProgress())
+        if (playerInputController.GetMovement().IsInProgress())
         {
-            Vector2 move = playerInputActions.Player.Movement.ReadValue<Vector2>();
+            Vector3 move = playerInputController.GetMovement().ReadValue<Vector2>().normalized.XYtoXZ();
 
-            charController.Move(moveSpeed * Time.deltaTime * new Vector3(move.x, 0, move.y));
+            charController.Move(moveSpeed * Time.deltaTime * move);
+            transform.rotation = Quaternion.Lerp(transform.rotation, move., rotationSmoothness);
         }
     }
 }
