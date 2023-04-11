@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Frttpc.Extensions
+namespace Frttpc.Statics
 {
     public static class Extensions
     {

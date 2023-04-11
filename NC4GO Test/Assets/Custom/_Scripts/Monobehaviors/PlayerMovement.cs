@@ -1,7 +1,7 @@
 using UnityEngine;
 using Unity.Netcode;
 using Frttpc;
-using Frttpc.Extensions;
+using Frttpc.Statics;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : NetworkBehaviour
@@ -22,12 +22,13 @@ public class PlayerMovement : NetworkBehaviour
     {
         if (!IsOwner) return;
 
-        if (playerInputController.GetMovement().IsInProgress())
+        if (playerInputController.GetMovement().IsPressed())
         {
             Vector3 move = playerInputController.GetMovement().ReadValue<Vector2>().normalized.XYtoXZ();
-
             charController.Move(moveSpeed * Time.deltaTime * move);
-            transform.rotation = Quaternion.Lerp(transform.rotation, move., rotationSmoothness);
+
+            float angle = Vector3.SignedAngle(Vector3.forward, move, Vector3.up);
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, angle, 0), rotationSmoothness);
         }
     }
 }

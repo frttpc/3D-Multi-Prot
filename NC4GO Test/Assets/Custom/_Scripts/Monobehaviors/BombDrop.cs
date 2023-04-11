@@ -32,7 +32,7 @@ namespace Frttpc
             if(bombCount > 0)
             {
                 Instantiate(bombPrefab, transform.position, Quaternion.identity);
-                bombCount--;
+                //bombCount--;
             }
         }
     }

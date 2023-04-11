@@ -110,7 +110,7 @@ namespace Frttpc
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard"",
                     ""action"": ""Bomb Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

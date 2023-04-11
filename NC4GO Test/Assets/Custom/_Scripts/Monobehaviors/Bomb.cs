@@ -1,9 +1,9 @@
 using System.Collections;
 using System;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using Frttpc.Statics;
 
-namespace Frttpc
+namespace Frttpc.Bomb
 {
     public class Bomb : MonoBehaviour
     {
@@ -19,7 +19,7 @@ namespace Frttpc
 
         private IEnumerator Countdown()
         {
-            yield return new WaitForSeconds(countdownTime);
+            yield return Yielders.Get(countdownTime);
             OnDetonate?.Invoke();
             Destroy(gameObject);
         }

@@ -27,7 +27,7 @@ namespace Frttpc
 
         void Start()
         {
-            //GenerateLayout();
+            GenerateLayout();
         }
 
         private void GenerateLayout()

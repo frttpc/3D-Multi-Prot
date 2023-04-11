@@ -1,26 +1,28 @@
-using Unity.Netcode;
 using UnityEngine.InputSystem;
+using UnityEngine;
 
 namespace Frttpc
 {
-    public class PlayerInputController : NetworkBehaviour
+    public class PlayerInputController : MonoBehaviour
     {
         private PlayerInputActions playerInputActions;
 
-        public override void OnNetworkSpawn()
+        private void Awake()
         {
             playerInputActions = new();
+        }
+
+        private void OnEnable()
+        {
             playerInputActions.Enable();
         }
 
-        public override void OnNetworkDespawn()
+        private void OnDisable()
         {
             playerInputActions.Disable();
         }
 
         public InputAction GetMovement() => playerInputActions.Player.Movement;
-
         public InputAction GetBombDrop() => playerInputActions.Player.BombDrop;
-
     }
 }

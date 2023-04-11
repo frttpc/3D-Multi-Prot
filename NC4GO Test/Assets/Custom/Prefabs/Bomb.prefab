@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53c86b56846052f48aa7fd532f008053, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countdownTime: 3
 --- !u!33 &5989463005401533481
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -1,5 +1,4 @@
 using UnityEngine;
-using Frttpc;
 
 namespace Frttpc
 {

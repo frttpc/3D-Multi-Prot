@@ -15,7 +15,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Bomb Drop",
+                    "name": "BombDrop",
                     "type": "Button",
                     "id": "b5d40995-703b-44a0-a84f-b797ccc4795c",
                     "expectedControlType": "Button",
@@ -86,8 +86,8 @@
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Bomb Drop",
+                    "groups": "Keyboard",
+                    "action": "BombDrop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
