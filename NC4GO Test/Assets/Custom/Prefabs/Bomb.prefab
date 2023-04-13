@@ -80,7 +80,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rayDir: {fileID: 7595070820639666150}
-  countdownTime: 3
+  explosionLine: {fileID: 915633442513952432, guid: 0e0dde007eb5c2146b122e0255d8fff2,
+    type: 3}
+  countdown: 3
 --- !u!33 &5989463005401533481
 MeshFilter:
   m_ObjectHideFlags: 0
