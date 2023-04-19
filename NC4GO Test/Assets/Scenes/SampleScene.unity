@@ -287,8 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ee1623187fd064098a9a980a20363b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUp:
-  - {fileID: 0}
+  dropTableSO: {fileID: 11400000, guid: 66a4419d089405a4380f585df34ff7e7, type: 2}
 --- !u!4 &66016928
 Transform:
   m_ObjectHideFlags: 0

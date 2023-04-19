@@ -5,7 +5,7 @@ namespace Frttpc
 {
     public class PowerUpManager : MonoBehaviour
     {
-        [SerializeField] private List<Transform> powerUp;
+        [SerializeField] private DropTableSO dropTableSO;
 
         private int _totalWeight;
 
@@ -14,20 +14,31 @@ namespace Frttpc
         private void Start()
         {
             SumTotalWeight();
+
         }
 
-        private void RandomDropPowerUp()
+        public void DropRandomPowerUp(Vector3 pos)
         {
-            int randomNumber = Random.Range(0, _totalWeight);
+            Transform prefab = ChooseAPowerUp();
 
-            //if(Random.Range(0, 100) <= )
+            if (prefab != null)
+                Instantiate(prefab, pos, Quaternion.identity);
+        }
+
+        private Transform ChooseAPowerUp()
+        {
+            int randomNumber = Random.Range(0, _totalWeight + 1);
+
+            //Random choice with weights
+
+            return null;
         }
 
         private void SumTotalWeight()
         {
-            foreach (Transform powerUp in powerUp)
+            for (int i = 0; i < dropTableSO.dropTable.Length; i++)
             {
-                _totalWeight += powerUp.GetComponent<PowerUp>().GetPowerUpSO().GetWeight();
+                _totalWeight += dropTableSO.dropTable[i].dropWeight;
             }
         }
     }

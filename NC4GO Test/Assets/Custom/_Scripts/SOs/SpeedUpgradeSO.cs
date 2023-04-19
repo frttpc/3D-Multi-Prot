@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Frttpc
 {
-    [CreateAssetMenu(fileName = "Speed Upgrade", menuName = "Power Ups/Speed Upgrade")]
+    [CreateAssetMenu(fileName = "Speed Upgrade", menuName = "Scriptable Objects/Power Ups/Speed Upgrade")]
     public class SpeedUpgradeSO : PowerUpSO
     {
         [SerializeField] private float speedUpgradeAmount;
