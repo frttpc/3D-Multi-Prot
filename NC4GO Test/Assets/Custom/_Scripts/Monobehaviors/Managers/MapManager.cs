@@ -37,7 +37,7 @@ namespace Frttpc
 
             GenerateCorners();
             AddCenterToEmptySpaces();
-            GenerateLayout();
+            //GenerateLayout();
         }
 
         private void GenerateLayout()

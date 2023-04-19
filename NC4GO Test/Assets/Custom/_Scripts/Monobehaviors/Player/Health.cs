@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 namespace Frttpc
@@ -8,13 +7,21 @@ namespace Frttpc
     {
         [SerializeField] private int health = 3;
 
+        public event Action OnDeath;
+
         public void Damage()
         {
             if (--health == 0) Die();
         }
 
+        public void IncreaseHealth(int amount)
+        {
+            health += amount;
+        }
+
         public void Die()
         {
+            OnDeath?.Invoke();
             print("Ded");
         }
     }

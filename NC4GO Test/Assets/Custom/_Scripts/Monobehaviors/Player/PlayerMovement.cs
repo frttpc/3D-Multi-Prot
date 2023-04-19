@@ -31,4 +31,6 @@ public class PlayerMovement : NetworkBehaviour
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, angle, 0), rotationSmoothness);
         }
     }
+
+    public void IncreaseMoveSpeed(float amount) => moveSpeed += amount;
 }

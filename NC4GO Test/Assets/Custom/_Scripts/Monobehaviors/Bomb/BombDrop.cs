@@ -6,10 +6,10 @@ namespace Frttpc
 {
     public class BombDrop : MonoBehaviour
     {
-        [SerializeField] private GameObject bombPrefab;
+        [SerializeField] private Bomb bombPrefab;
 
         private int bombCount = 1;
-        private int bombExplosionRange = 1;
+        private int explosionRange = 1;
 
         private PlayerInputController playerInputController;
 
@@ -33,8 +33,16 @@ namespace Frttpc
             if(bombCount > 0)
             {
                 Instantiate(bombPrefab, transform.position.RoundToInt(), Quaternion.identity);
-                //bombCount--;
+                bombCount--;
             }
+        }
+
+        public void IncreaseBombCount() => bombCount++;
+
+        public void IncreaseExplosionRange()
+        {
+            bombPrefab.IncreaseRange();
+            explosionRange++;
         }
     }
 }
