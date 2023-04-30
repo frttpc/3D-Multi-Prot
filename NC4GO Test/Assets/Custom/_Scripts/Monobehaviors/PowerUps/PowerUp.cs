@@ -8,7 +8,6 @@ namespace Frttpc
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("Trigger");
             powerUpSO.Apply(other.gameObject);
             Destroy(gameObject);
         }

@@ -6,7 +6,7 @@ namespace Frttpc
 {
     public class MapManager : MonoBehaviour
     {
-        [SerializeField] private Vector2Int[] playerCoords;
+        [SerializeField] private SpawnPointsTable spawnPointsTable;
         private List<Vector2Int> emptySpaces = new(); 
 
         [Header("Obtsacles")]
@@ -68,9 +68,11 @@ namespace Frttpc
 
         private void GenerateCorners()
         {
-            for (int i = 0; i < playerCoords.Length; i++)
+            Vector2Int[] spawnPointsArr = spawnPointsTable.spawnPoints;
+
+            for (int i = 0; i < spawnPointsArr.Length; i++)
             {
-                Vector2Int vec = playerCoords[i];
+                Vector2Int vec = spawnPointsArr[i];
                 emptySpaces.Add(new Vector2Int(vec.x * (xValue - 1), vec.y * (zValue - 1)));
                 emptySpaces.Add(new Vector2Int(vec.x * (xValue - 2), vec.y * (zValue - 1)));
                 emptySpaces.Add(new Vector2Int(vec.x * (xValue - 1), vec.y * (zValue - 2)));
@@ -78,5 +80,7 @@ namespace Frttpc
         }
 
         private void AddCenterToEmptySpaces() => emptySpaces.Add(Vector2Int.zero);
+
+        public Vector2Int GetSize() => new(xValue, zValue);
     }
 }

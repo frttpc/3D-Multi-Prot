@@ -1,48 +1,52 @@
 using UnityEngine;
+using Unity.Netcode;
 using UnityEngine.InputSystem;
 using Frttpc.Statics;
 
 namespace Frttpc
 {
-    public class BombDrop : MonoBehaviour
+    public class BombDrop : NetworkBehaviour, IGameEventListener
     {
         [SerializeField] private Bomb bombPrefab;
 
+        //for increase bomb count ondetonate
+        [SerializeField] private GameEvent OnExplodeEvent;
+        
         private int bombCount = 1;
         private int explosionRange = 1;
 
-        private PlayerInputController playerInputController;
-
-        private void Awake()
+        void Start()
         {
-            playerInputController = GetComponent<PlayerInputController>();
+            InputManager.Instance.GetBombDrop().performed += DropABomb;
+            OnExplodeEvent.RegisterListener(this);
         }
 
-        private void OnEnable()
+        private void OnDisable()
         {
-            playerInputController.GetBombDrop().performed += DropABomb;
+            InputManager.Instance.GetBombDrop().performed -= DropABomb;
+            OnExplodeEvent.UnregisterListener(this);
         }
 
-        private void OnDestroy()
+        public void OnEventRaised()
         {
-            playerInputController.GetBombDrop().performed -= DropABomb;
+            IncreaseBombCount();
         }
 
         private void DropABomb(InputAction.CallbackContext context)
         {
-            if(bombCount > 0)
-            {
-                Instantiate(bombPrefab, transform.position.RoundToInt(), Quaternion.identity);
-                bombCount--;
-            }
+            if (!IsOwner) return;
+            if (bombCount <= 0) return;
+
+            Bomb newBomb = Instantiate(bombPrefab, transform.position.RoundToInt(), Quaternion.identity);
+            newBomb.SetRange(explosionRange);
+            newBomb.GetComponent<NetworkObject>().Spawn(true);
+
+            bombCount--;
         }
 
         public void IncreaseBombCount() => bombCount++;
 
-        public void IncreaseExplosionRange()
-        {
-            bombPrefab.IncreaseRange();
-            explosionRange++;
-        }
+        public void IncreaseExplosionRange() => explosionRange++;
+        
     }
 }

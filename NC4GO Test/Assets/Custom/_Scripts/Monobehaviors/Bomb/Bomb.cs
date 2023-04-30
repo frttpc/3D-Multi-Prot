@@ -11,38 +11,25 @@ namespace Frttpc
         [SerializeField] private LineRenderer explosionLine;
 
         [Header("Explosion")]
+        [SerializeField] private GameEvent OnExplodeEvent;
         [SerializeField] private float countdown = 3;
+        [SerializeField] private float duration;
         private int range = 1;
 
-        private SphereCollider sphereCollider;
-
-        public event Action OnDetonate;
-
-        private void Awake()
-        {
-            sphereCollider = GetComponent<SphereCollider>();    
-        }
-
-        private void Start()
-        {
-            OnDetonate += Explode;
-        }
 
         private void Update()
         {
             countdown -= Time.deltaTime;
 
             if (countdown <= 0f)
-                OnDetonate?.Invoke();
+            {
+                OnExplodeEvent.Raise();
+                Explode();
+                Destroy(gameObject);
+            }
         }
 
         private void Explode()
-        {
-            ExplosionDir();
-            Destroy(gameObject);
-        }
-
-        private void ExplosionDir()
         {
             for (int i = 0; i < 4; i++)
             {
@@ -64,12 +51,12 @@ namespace Frttpc
                     line.SetPosition(1, rayDir.forward * range);
                 }
 
-                Destroy(line.gameObject, 2f);
+                Destroy(line.gameObject, duration);
 
                 rayDir.Rotate(Vector3.up, 90f);
             }
         }
 
-        public void IncreaseRange() => range++;
+        public void SetRange(int newRange) => range = newRange;
     }
 }

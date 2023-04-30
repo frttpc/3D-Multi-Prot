@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Frttpc
 {
-    [CreateAssetMenu(menuName = "Scriptable Objects / Drop Table")]
+    [CreateAssetMenu(menuName = "Scriptable Objects /Drop Table")]
     public class DropTableSO : ScriptableObject
     {
         public DropItem[] dropTable;
