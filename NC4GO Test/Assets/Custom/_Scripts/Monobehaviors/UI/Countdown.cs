@@ -15,6 +15,12 @@ namespace Frttpc.UI
             Hide();
         }
 
+        private void OnDestroy()
+        {
+            GameManager.Instance.OnCountdownStart -= Show;
+            GameManager.Instance.OnGameStart -= Hide;
+        }
+
         private void Update()
         {
             countdownText.text = Mathf.Ceil(GameManager.Instance.GetCountdownTimer()).ToString();

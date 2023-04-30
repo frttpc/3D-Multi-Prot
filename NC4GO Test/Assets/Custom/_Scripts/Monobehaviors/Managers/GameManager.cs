@@ -27,6 +27,7 @@ namespace Frttpc
         public event Action OnGameResumed;
         public event Action OnCountdownStart;
         public event Action OnGameStart;
+        public event Action OnGameOver;
 
         public static GameManager Instance;
 
@@ -39,7 +40,7 @@ namespace Frttpc
 
         private void Start()
         {
-            PauseGame();
+            //PauseGame();
         }
 
         private void Update()
