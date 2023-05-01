@@ -13,17 +13,22 @@ MonoBehaviour:
   m_Name: PowerUpDropTable
   m_EditorClassIdentifier: 
   dropTable:
-  - powerUpPrefab: {fileID: 8413511697279476139, guid: 62ec10962a8355e4d8089ef0be5c4fd1,
+  - powerUpPrefab: {fileID: 9007628718695111595, guid: f1d0a829e3814f54bb04519f85051b1c,
       type: 3}
-    dropWeight: 4
-  - powerUpPrefab: {fileID: 498578223132490143, guid: 567c1e22e6c715749b5c90f98188ecd6,
+    shineColor: {r: 0.8113208, g: 0.27816927, b: 0.03444285, a: 1}
+    dropWeight: 8
+  - powerUpPrefab: {fileID: 4864345372280746090, guid: 9e806e358c64e9843af9e8a48d175ab7,
       type: 3}
-    dropWeight: 4
-  - powerUpPrefab: {fileID: 8112919967383638728, guid: 8a6fc037efc43924799d924ef0e1fa57,
+    shineColor: {r: 0.8490566, g: 0.8490566, b: 0.8490566, a: 1}
+    dropWeight: 8
+  - powerUpPrefab: {fileID: 9052518421587023557, guid: 8a6fc037efc43924799d924ef0e1fa57,
       type: 3}
-    dropWeight: 1
-  - powerUpPrefab: {fileID: 8112919967383638728, guid: 74cfb22f250dc8f4f9fda0030462e6ec,
+    shineColor: {r: 0.7735849, g: 0.032840855, b: 0.3401938, a: 1}
+    dropWeight: 2
+  - powerUpPrefab: {fileID: 734380154200456629, guid: 2a56300a8b37b994bb37920c3d652c46,
       type: 3}
+    shineColor: {r: 0.10417446, g: 0.8113208, b: 0.057404764, a: 1}
     dropWeight: 1
   - powerUpPrefab: {fileID: 0}
-    dropWeight: 10
+    shineColor: {r: 0, g: 0, b: 0, a: 0}
+    dropWeight: 40

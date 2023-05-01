@@ -14,6 +14,8 @@ namespace Frttpc
     public struct DropItem
     {
         public Transform powerUpPrefab;
+        [ColorUsage(true, true)]
+        public Color shineColor;
         public int dropWeight;
     }
 }

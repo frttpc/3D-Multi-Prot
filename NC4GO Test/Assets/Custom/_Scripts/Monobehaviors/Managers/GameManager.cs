@@ -40,7 +40,7 @@ namespace Frttpc
 
         private void Start()
         {
-            //PauseGame();
+            Time.timeScale = 0;
         }
 
         private void Update()
@@ -49,18 +49,18 @@ namespace Frttpc
             {
                 case State.WaitingToStart:
                     waitingTimer -= Time.unscaledDeltaTime;
-                    if (waitingTimer < 0)
+                    if (waitingTimer <= 0)
                         gameState = State.Countdown;
                     break;
                 case State.Countdown:
-                    countdownTimer -= Time.unscaledDeltaTime;
-                    if (countdownTimer < 1)
-                        gameState = State.Playing;
                     OnCountdownStart?.Invoke();
+                    countdownTimer -= Time.unscaledDeltaTime;
+                    if (countdownTimer <= 0)
+                        gameState = State.Playing;
                     break;
                 case State.Playing:
-                    ResumeGame();
                     OnGameStart?.Invoke();
+                    ResumeGame();
                     break;
                 case State.Paused:
                     break;
