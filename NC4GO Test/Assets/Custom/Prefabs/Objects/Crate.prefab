@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxDestroyEffect: {fileID: 8586941093903636520, guid: d06fb29689948564dba32d62c6e2fce6,
     type: 3}
+  dropPowerUpEvent: {fileID: 11400000, guid: 0d0e53258ad136e419cf50c83ac4f2f4, type: 2}
 --- !u!33 &2093278357381032766
 MeshFilter:
   m_ObjectHideFlags: 0

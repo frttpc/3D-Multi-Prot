@@ -155,7 +155,7 @@ Transform:
   - {fileID: 634910016}
   - {fileID: 1068812865}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &41299417
 GameObject:
@@ -255,7 +255,7 @@ RectTransform:
   - {fileID: 415075370}
   - {fileID: 202341256}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -291,6 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89ee1623187fd064098a9a980a20363b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameEventGeneric: {fileID: 11400000, guid: 0d0e53258ad136e419cf50c83ac4f2f4, type: 2}
   dropTableSO: {fileID: 11400000, guid: 66a4419d089405a4380f585df34ff7e7, type: 2}
 --- !u!4 &66016928
 Transform:
@@ -721,7 +722,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 202341256}
-  - component: {fileID: 202341257}
   m_Layer: 5
   m_Name: HUD
   m_TagString: Untagged
@@ -753,22 +753,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &202341257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 202341255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 542c4751173e48946a142fde9360cfbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bombText: {fileID: 0}
-  healthText: {fileID: 0}
-  rangeText: {fileID: 0}
-  speedText: {fileID: 0}
 --- !u!1 &318369330
 GameObject:
   m_ObjectHideFlags: 0
@@ -1741,7 +1725,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &745520779
 GameObject:
@@ -2274,6 +2258,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 906440541}
   m_CullTransparentMesh: 1
+--- !u!1 &909610150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 909610152}
+  - component: {fileID: 909610151}
+  m_Layer: 0
+  m_Name: HUDManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!114 &909610151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909610150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 542c4751173e48946a142fde9360cfbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bombCountText: {fileID: 157753107}
+  healthCountText: {fileID: 1416224236}
+  rangeAmountText: {fileID: 892527046}
+  speedAmountText: {fileID: 688813560}
+--- !u!4 &909610152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909610150}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &938069503
 GameObject:
   m_ObjectHideFlags: 0
@@ -3246,8 +3278,9 @@ MonoBehaviour:
   cratePrefab: {fileID: 2093278357381032763, guid: 944bfb718a4ecbb4f98be61563829b89,
     type: 3}
   cratesParent: {fileID: 1068812865}
-  xCount: 20
-  zCount: 20
+  xCount: 15
+  zCount: 15
+  generateMap: 1
 --- !u!1 &1416224234
 GameObject:
   m_ObjectHideFlags: 0
@@ -4557,7 +4590,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2111388272
 GameObject:

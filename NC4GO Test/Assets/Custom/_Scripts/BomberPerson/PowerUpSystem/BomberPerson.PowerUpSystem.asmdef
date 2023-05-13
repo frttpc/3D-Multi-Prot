@@ -1,0 +1,20 @@
+{
+    "name": "BomberPerson.PowerUpSystem",
+    "rootNamespace": "BomberPerson.PowerUpSystem",
+    "references": [
+        "GUID:355c49a4bb3742c4b87d6b9c068b5b10",
+        "GUID:1d3e0430760f451429ec18a53a96c2fd",
+        "GUID:1491147abca9d7d4bb7105af628b223e",
+        "GUID:c9ccc13825c22434fb06764e7ed00720",
+        "GUID:f5bcdc146ea981f4c9184d7a6b6ab08a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
