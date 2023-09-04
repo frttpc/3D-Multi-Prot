@@ -1,6 +1,7 @@
 using UnityEngine;
 using Frttpc.Interfaces;
 using Frttpc.SOs;
+using Frttpc.Mono;
 
 namespace BomberPerson.BombSystem
 {
@@ -9,12 +10,6 @@ namespace BomberPerson.BombSystem
         [SerializeField] private Transform rayDir;
         [SerializeField] private LineRenderer explosionLine;
         [SerializeField] private BoxCollider boxCollider;
-
-        [Header("Push")]
-        [SerializeField] private LayerMask playerLayer;
-        [SerializeField] private float speed;
-        private bool pushed = false;
-        private Vector2 dir;
 
         [Header("Explosion")]
         [SerializeField] private GameEvent OnExplodeEvent;
@@ -26,11 +21,6 @@ namespace BomberPerson.BombSystem
         private void Update()
         {
             countdown -= Time.deltaTime;
-
-            if (pushed)
-            {
-                transform.Translate(speed * Time.deltaTime * dir);
-            }
 
             if (countdown <= 0f)
             {
@@ -49,6 +39,9 @@ namespace BomberPerson.BombSystem
             exploded = true;
             OnExplodeEvent.Raise();
             Explode();
+
+            CameraShake.Instance.Shake();
+
             Destroy(gameObject);
         }
 
@@ -84,21 +77,6 @@ namespace BomberPerson.BombSystem
         {
             boxCollider.isTrigger = false;
         }
-
-        //private void OnCollisionEnter(Collision collision)
-        //{
-        //    if (collision.gameObject.layer == 6)
-        //    {
-        //        print("layer");
-
-        //        dir = -collision.GetContact(0).normal;
-        //        pushed = true;
-        //    }
-        //    //else if (pushed)
-        //    //{
-        //    //    pushed = false;
-        //    //}
-        //}
 
         public void SetRange(float newRange) => range = newRange;
     }
